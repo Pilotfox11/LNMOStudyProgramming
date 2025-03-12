@@ -1,0 +1,65 @@
+#include <SFML/Graphics.hpp>
+#include <iostream>
+
+
+int main()
+{
+    sf::RenderWindow window(sf::VideoMode(1000,1000), "Graphic1.1");
+    sf::Vector2f v(50,50);
+    sf::RectangleShape rect(v);
+    sf::Clock clock;
+    rect.setFillColor(sf:: Color :: Yellow);
+    rect.setPosition(525,475);
+
+    float speed = 10.0f;
+    while(window.isOpen())
+    {
+        sf:: Event event;
+        sf::Vector2f CCC = rect.getPosition();
+        while(window.pollEvent(event))
+        {
+            if(event.type == sf:: Event:: Closed)
+            {
+                window.close();
+            }
+
+            if(sf::Keyboard::isKeyPressed(sf::Keyboard:: W))
+            {
+                rect.setPosition(CCC.x,CCC.y - speed);
+                
+
+            }
+
+            if(sf::Keyboard::isKeyPressed(sf::Keyboard:: S))
+            {
+                rect.setPosition(CCC.x,CCC.y + speed);
+                
+
+            }
+
+            if(sf::Keyboard::isKeyPressed(sf::Keyboard:: D))
+            {
+                rect.setPosition(CCC.x + speed,CCC.y);
+                
+
+            }
+
+            if(sf::Keyboard::isKeyPressed(sf::Keyboard:: A))
+            {
+                rect.setPosition(CCC.x - speed,CCC.y);
+                
+
+            }
+
+            if(sf::Keyboard::isKeyPressed(sf::Keyboard:: W))
+            {
+                rect.setPosition(CCC.x,CCC.y - speed);
+                
+
+            }
+        }
+        window.clear(sf::Color::Black);
+        window.draw(rect);
+        window.display();
+    }
+}
