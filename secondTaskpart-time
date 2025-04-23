@@ -1,0 +1,39 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+
+void genBraket(int a, int first, int end, string current)
+{
+    if(current.size() == a)
+    {
+       cout << current << endl;
+    }
+
+
+    if(first < a/2)
+    {
+        genBraket(a, first + 1, end, current + "(");
+    }
+
+    if(end < first)
+    {
+        genBraket(a, first, end + 1, current + ")" );
+    }
+}
+
+int main()
+{
+    int a;
+    cout << "Введите вашу длинну строки: " << endl;
+    cin >> a;
+
+    if(a % 2 != 0)
+    {
+        cout << "Нечетное число не даст правильных скобок!" << endl;
+        return 0;
+    }
+
+    genBraket(a,0,0, "");
+}
